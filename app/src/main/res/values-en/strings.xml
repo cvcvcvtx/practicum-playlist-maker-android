@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">playlist-maker-android-DmitrikovVitaly</string>
+    <string name="search_text">Search</string>
+    <string name="playlists_text">Playlists</string>
+    <string name="favourites_text">Favourites</string>
+    <string name="settings_text">Settings</string>
+</resources>
