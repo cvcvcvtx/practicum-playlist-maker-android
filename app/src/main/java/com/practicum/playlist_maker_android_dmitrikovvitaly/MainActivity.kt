@@ -1,9 +1,11 @@
 package com.practicum.playlist_maker_android_dmitrikovvitaly
 
+import android.content.Intent
 import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -46,6 +48,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import coil3.compose.AsyncImage
 
@@ -108,14 +111,39 @@ class MainActivity : ComponentActivity() {
 
             ){
 
+                val context = LocalContext.current
+                val stringSearch = stringResource(R.string.search_text)
+                val stringPlaylists = stringResource(R.string.playlists_text)
+                val stringFavourites = stringResource(R.string.favourites_text)
+                val stringSettings = stringResource(R.string.settings_text)
 
-                MenuItem(R.drawable.search, stringResource(R.string.search_text), onClick = { })
+                MenuItem(R.drawable.search, stringSearch,
+                    onClick = {
+                        //Toast.makeText(context, stringSearch, Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@MainActivity, SearchActivity::class.java)
+                        startActivity(intent)
+                    }
+                )
 
-                MenuItem(R.drawable.playlists, stringResource(R.string.playlists_text), onClick = { })
+                MenuItem(R.drawable.playlists, stringPlaylists,
+                    onClick = {
+                        Toast.makeText(context, stringPlaylists, Toast.LENGTH_SHORT).show()
+                    }
+                )
 
-                MenuItem(R.drawable.favourite, stringResource(R.string.favourites_text), onClick = { })
+                MenuItem(R.drawable.favourite, stringFavourites,
+                    onClick = {
+                        Toast.makeText(context, stringFavourites, Toast.LENGTH_SHORT).show()
+                    }
+                )
 
-                MenuItem(R.drawable.settings, stringResource(R.string.settings_text), onClick = { })
+                MenuItem(R.drawable.settings, stringSettings,
+                    onClick = {
+                        //Toast.makeText(context, stringSettings, Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@MainActivity, SettingsActivity::class.java)
+                        startActivity(intent)
+                    }
+                )
 
 
 
