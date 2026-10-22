@@ -5,4 +5,8 @@
     <string name="playlists_text">Playlists</string>
     <string name="favourites_text">Favourites</string>
     <string name="settings_text">Settings</string>
+    <string name="agreement">Agreement</string>
+    <string name="share_app">Share app</string>
+    <string name="message_support">Write to support</string>
+    <string name="user_agreement">User agreement</string>
 </resources>

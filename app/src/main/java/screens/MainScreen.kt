@@ -12,15 +12,22 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
+import androidx.compose.material.icons.filled.ArrowBackIosNew
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -87,7 +94,7 @@ fun DrawMainScreen(
             val stringFavourites = stringResource(R.string.favourites_text)
             val stringSettings = stringResource(R.string.settings_text)
 
-            MenuItem(R.drawable.search, stringSearch,
+            MenuItem(painterResource(R.drawable.search), stringSearch,
                 onClick = {
                     //Toast.makeText(context, stringSearch, Toast.LENGTH_SHORT).show()
                     //val intent = Intent(context, SearchActivity::class.java)
@@ -96,26 +103,26 @@ fun DrawMainScreen(
                 }
             )
 
-            MenuItem(R.drawable.playlists, stringPlaylists,
+            MenuItem(painterResource(R.drawable.playlists), stringPlaylists,
                 onClick = {
                     Toast.makeText(context, stringPlaylists, Toast.LENGTH_SHORT).show()
                     //navigateToPlaylists()
                 }
             )
 
-            MenuItem(R.drawable.favourite, stringFavourites,
+            MenuItem(painterResource(R.drawable.favourite), stringFavourites,
                 onClick = {
                     Toast.makeText(context, stringFavourites, Toast.LENGTH_SHORT).show()
                     //navigateToFavourites()
                 }
             )
 
-            MenuItem(R.drawable.settings, stringSettings,
+            MenuItem(painterResource(R.drawable.settings), stringSettings,
                 onClick = {
                     //Toast.makeText(context, stringSettings, Toast.LENGTH_SHORT).show()
                     //val intent = Intent(this@MainActivity, SettingsActivity::class.java)
                     //startActivity(intent)
-                    //navigateToSettings();
+                    navigateToSettings();
                 }
             )
 
@@ -129,7 +136,7 @@ fun DrawMainScreen(
 
 @Composable
 fun MenuItem(
-    iconResId: Int,
+    painter: Painter,
     name: String,
     onClick: () -> Unit
 ){
@@ -145,7 +152,7 @@ fun MenuItem(
         verticalAlignment = Alignment.CenterVertically
     ){
         Image(
-            painter = painterResource(iconResId),
+            painter = painter,
             contentDescription = null,
         )
 
@@ -159,9 +166,11 @@ fun MenuItem(
         )
 
 
-        Image(
-            painter = painterResource(R.drawable.arrow),
-            contentDescription = null
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
+            tint = Color.Gray,
+            contentDescription = null,
+            modifier = Modifier.size(24.dp)
         )
 
     }

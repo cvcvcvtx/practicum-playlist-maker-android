@@ -59,6 +59,8 @@ import coil3.compose.AsyncImage
 import com.google.gson.Gson
 import screens.DrawMainScreen
 import screens.DrawSearchScreen
+import screens.DrawSettingsScreen
+import screens.DrawUserAgreementScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -99,7 +101,7 @@ class MainActivity : ComponentActivity() {
                     navigateToSearch = { navController.navigate("search") },
                     navigateToPlaylists = {  },
                     navigateToFavourites = {  },
-                    navigateToSettings = {  },
+                    navigateToSettings = { navController.navigate("settings") },
                 )
             }
 
@@ -110,6 +112,18 @@ class MainActivity : ComponentActivity() {
                 )
             }
 
+
+            composable(route = "settings") {
+                DrawSettingsScreen(
+                    navController = navController
+                )
+            }
+
+            composable(route = "user_agreement_screen") {
+                DrawUserAgreementScreen(
+                    navController = navController
+                )
+            }
 
         }
     }
