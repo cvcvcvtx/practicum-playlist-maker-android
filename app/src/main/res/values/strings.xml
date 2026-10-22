@@ -5,4 +5,8 @@
     <string name="playlists_text">Плейлисты</string>
     <string name="favourites_text">Любимое</string>
     <string name="settings_text">Настройки</string>
+    <string name="agreement">Соглашение</string>
+    <string name="share_app">Поделиться приложением</string>
+    <string name="message_support">Написать в поддержку</string>
+    <string name="user_agreement">Пользовательское соглашение</string>
 </resources>

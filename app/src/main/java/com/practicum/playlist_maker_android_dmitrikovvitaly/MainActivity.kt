@@ -45,12 +45,22 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
+import com.google.gson.Gson
+import screens.DrawMainScreen
+import screens.DrawSearchScreen
+import screens.DrawSettingsScreen
+import screens.DrawUserAgreementScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -58,140 +68,73 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            DrawMainScreen()
+            //DrawMainScreen()
+
+            PlaylistHost(
+                navController = rememberNavController(),
+                gson = remember { Gson() },
+                startDestination = "main",
+                modifier = Modifier.fillMaxSize()
+            )
+
         }
     }
 
 
-    @Preview(showSystemUi = false)
-    @Composable
-    fun DrawMainScreen(){
-        Column(
-            modifier = Modifier.fillMaxSize().background(Color(0xFF3772E7))
-        ){
-
-            // header box
-            Box(
-                modifier = Modifier.statusBarsPadding().height(70.dp).fillMaxWidth().padding(4.dp),
-            ){
-
-                Box(
-                    modifier = Modifier.padding(horizontal = 12.dp).height(26.dp).fillMaxWidth(),
-                    contentAlignment = Alignment.CenterStart
-                ){
-                    Text(
-                        text = stringResource(R.string.title),
-                        fontSize = 22.sp,
-                        color = Color.White
-                    )
-                }
-
-
-            }
-
-            // menu column
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .clip(
-                        RoundedCornerShape(
-                            topStart = 16.dp,
-                            topEnd = 16.dp,
-                            bottomStart = 0.dp,
-                            bottomEnd = 0.dp
-                        )
-                    )
-                    .background(Color.White)
-                    .padding(
-                        start = 16.dp,
-                        end = 16.dp,
-                        top = 8.dp,
-                        bottom = 0.dp
-                    )
-
-            ){
-
-                val context = LocalContext.current
-                val stringSearch = stringResource(R.string.search_text)
-                val stringPlaylists = stringResource(R.string.playlists_text)
-                val stringFavourites = stringResource(R.string.favourites_text)
-                val stringSettings = stringResource(R.string.settings_text)
-
-                MenuItem(R.drawable.search, stringSearch,
-                    onClick = {
-                        //Toast.makeText(context, stringSearch, Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@MainActivity, SearchActivity::class.java)
-                        startActivity(intent)
-                    }
-                )
-
-                MenuItem(R.drawable.playlists, stringPlaylists,
-                    onClick = {
-                        Toast.makeText(context, stringPlaylists, Toast.LENGTH_SHORT).show()
-                    }
-                )
-
-                MenuItem(R.drawable.favourite, stringFavourites,
-                    onClick = {
-                        Toast.makeText(context, stringFavourites, Toast.LENGTH_SHORT).show()
-                    }
-                )
-
-                MenuItem(R.drawable.settings, stringSettings,
-                    onClick = {
-                        //Toast.makeText(context, stringSettings, Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@MainActivity, SettingsActivity::class.java)
-                        startActivity(intent)
-                    }
-                )
-
-
-
-            }
-        }
-    }
 
 
 
     @Composable
-    fun MenuItem(
-        iconResId: Int,
-        name: String,
-        onClick: () -> Unit
-        ){
-        Row(
-            modifier = Modifier
-                .height(66.dp)
-                .fillMaxWidth()
-                .clip(
-                    shape = RoundedCornerShape(16.dp)
+    fun PlaylistHost(
+        modifier: Modifier = Modifier,
+        startDestination: String = "main",
+        navController: NavHostController,
+        gson: Gson,
+    ) {
+        NavHost(
+            navController = navController,
+            startDestination = startDestination,
+            modifier = modifier
+        ) {
+            composable(route = "main") {
+                DrawMainScreen(
+                    navigateToSearch = { navController.navigate("search") },
+                    navigateToPlaylists = {  },
+                    navigateToFavourites = {  },
+                    navigateToSettings = { navController.navigate("settings") },
                 )
-                .clickable(onClick = onClick)
-                .padding(horizontal = 12.dp, vertical = 20.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ){
-            Image(
-                painter = painterResource(iconResId),
-                contentDescription = null,
-            )
-
-            Spacer(modifier = Modifier.width(8.dp))
-
-            Text(
-                text = name,
-                fontSize = 22.sp,
-                color = Color.Black,
-                modifier = Modifier.weight(1f)
-            )
+            }
 
 
-            Image(
-                painter = painterResource(R.drawable.arrow),
-                contentDescription = null
-            )
+            composable(route = "search") {
+                DrawSearchScreen(
+                    navController = navController
+                )
+            }
+
+
+            composable(route = "settings") {
+                DrawSettingsScreen(
+                    navController = navController
+                )
+            }
+
+            composable(route = "user_agreement_screen") {
+                DrawUserAgreementScreen(
+                    navController = navController
+                )
+            }
 
         }
     }
+
+
+
+
+
+
+
+
 
 
 
