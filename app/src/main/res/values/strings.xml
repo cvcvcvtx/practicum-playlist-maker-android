@@ -9,4 +9,9 @@
     <string name="share_app">Поделиться приложением</string>
     <string name="message_support">Написать в поддержку</string>
     <string name="user_agreement">Пользовательское соглашение</string>
+    <string name="gplay_app_link" translatable="false">https://google.com</string>
+    <string name="share_message">Привет! Попробуй PlaylistMaker:\\n</string>
+    <string name="share_through">Поделиться через</string>
+    <string name="contact_email" translatable="false">vdmitrikov@sfedu.ru</string>
+    <string name="offer_webpage" translatable="false">https://yandex.ru/legal/practicum_offer/</string>
 </resources>
