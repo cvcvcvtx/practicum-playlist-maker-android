@@ -1,9 +1,8 @@
-package screens
+package playlistmaker.ui.settings
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -19,7 +18,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
-import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.SupportAgent
 import androidx.compose.material3.Icon
@@ -33,7 +31,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.practicum.playlist_maker_android_dmitrikovvitaly.R
@@ -41,12 +38,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.core.content.ContextCompat.startActivity
-import androidx.navigation.NavController
 
 
 @Composable
-fun DrawSettingsScreen(navController: NavController){
+fun DrawSettingsScreen(){
     var isNightTheme by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
@@ -100,7 +95,7 @@ fun DrawSettingsScreen(navController: NavController){
 
         DrawSettingsOption(stringResource(R.string.share_app), Icons.Default.Share, onClick = { shareApplication(context) })
         DrawSettingsOption(stringResource(R.string.message_support), Icons.Default.SupportAgent, onClick = { contactDevelopers(context) })
-        DrawSettingsOption(stringResource(R.string.user_agreement), Icons.AutoMirrored.Filled.ArrowForwardIos, onClick = { navController.navigate("user_agreement_screen") })
+        DrawSettingsOption(stringResource(R.string.user_agreement), Icons.AutoMirrored.Filled.ArrowForwardIos, onClick = { openOfferPage(context) })
 
 
     }
@@ -138,10 +133,10 @@ fun DrawSettingsOption(text: String, imageVector: ImageVector, onClick: () -> Un
 
 fun shareApplication(context: Context) {
 
-    val appPackageName = context.packageName
-    val playStoreLink = "https://google.com"
 
-    val shareMessage = "Привет! Попробуй PlaylistMaker:\n$playStoreLink"
+    val playStoreLink = context.getString(R.string.gplay_app_link)
+
+    val shareMessage = context.getString(R.string.share_message) + playStoreLink
 
     val sendIntent = Intent().apply {
         action = Intent.ACTION_SEND
@@ -149,7 +144,7 @@ fun shareApplication(context: Context) {
         type = "text/plain"
     }
 
-    val shareIntent = Intent.createChooser(sendIntent, "Поделиться через")
+    val shareIntent = Intent.createChooser(sendIntent, context.getString(R.string.share_through))
 
     context.startActivity(shareIntent)
 }
@@ -159,7 +154,17 @@ fun contactDevelopers(context: Context) {
 
     val shareIntent = Intent(Intent.ACTION_SENDTO)
     shareIntent.data = Uri.parse("mailto:")
-    shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("cvcvcvtx@gmail.com"))
+    shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(context.getString(R.string.contact_email)))
 
     context.startActivity(shareIntent)
+}
+
+
+fun openOfferPage(context: Context) {
+    val webpage: Uri = Uri.parse(context.getString(R.string.offer_webpage))
+
+    val intent = Intent(Intent.ACTION_VIEW, webpage)
+
+    context.startActivity(intent)
+
 }
