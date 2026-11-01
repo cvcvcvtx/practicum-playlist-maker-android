@@ -1,4 +1,4 @@
-package screens
+package playlistmaker.ui.settings
 
 import android.content.Context
 import android.content.Intent

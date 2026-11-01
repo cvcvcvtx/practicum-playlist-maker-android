@@ -1,4 +1,4 @@
-package screens
+package playlistmaker.ui.main
 
 import android.widget.Toast
 import androidx.compose.foundation.Image

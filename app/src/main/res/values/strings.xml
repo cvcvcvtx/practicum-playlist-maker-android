@@ -14,4 +14,7 @@
     <string name="share_through">Поделиться через</string>
     <string name="contact_email" translatable="false">vdmitrikov@sfedu.ru</string>
     <string name="offer_webpage" translatable="false">https://yandex.ru/legal/practicum_offer/</string>
+    <string name="search_tracks_placeholder">Введите название трека</string>
+    <string name="check_connection">Проверьте соединение</string>
+    <string name="no_tracks_found">Ничего не найдено</string>
 </resources>

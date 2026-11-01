@@ -11,4 +11,8 @@
     <string name="user_agreement">User agreement</string>
     <string name="share_message">Hello! Try PlaylistMaker:\\n</string>
     <string name="share_through">Share through</string>
+    <string name="search_tracks_placeholder">Enter track name</string>
+    <string name="check_connection">Check connection</string>
+    <string name="no_tracks_found">No tracks found</string>
+
 </resources>

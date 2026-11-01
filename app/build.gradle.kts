@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.material)
 
     debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation(libs.koin.android)
 
     implementation("io.coil-kt.coil3:coil-compose:3.3.0")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.3.0")
@@ -54,6 +55,7 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
     implementation("androidx.navigation:navigation-compose:2.9.0")
     implementation("com.google.code.gson:gson:2.13.2")
+    implementation("androidx.activity:activity-ktx:1.10.1")
 
 
     implementation(platform(libs.androidx.compose.bom))
