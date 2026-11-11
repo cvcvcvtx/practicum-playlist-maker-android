@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">playlist-maker-android-DmitrikovVitaly</string>
+    <string name="search_text">Search</string>
+    <string name="playlists_text">Playlists</string>
+    <string name="favourites_text">Favourites</string>
+    <string name="settings_text">Settings</string>
+    <string name="agreement">Agreement</string>
+    <string name="share_app">Share app</string>
+    <string name="message_support">Write to support</string>
+    <string name="user_agreement">User agreement</string>
+    <string name="share_message">Hello! Try PlaylistMaker:\\n</string>
+    <string name="share_through">Share through</string>
+    <string name="search_tracks_placeholder">Enter track name</string>
+    <string name="check_connection">Check connection</string>
+    <string name="no_tracks_found">No tracks found</string>
+
+</resources>

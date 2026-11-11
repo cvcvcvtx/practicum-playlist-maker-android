@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name="playlistmaker.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlaylistmakerandroidDmitrikovVitaly">
         <activity
-            android:name=".MainActivity"
+            android:name="playlistmaker.ui.activity.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.PlaylistmakerandroidDmitrikovVitaly"
@@ -23,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
