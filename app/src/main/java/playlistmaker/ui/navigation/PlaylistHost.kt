@@ -11,7 +11,6 @@ import playlistmaker.ui.details.DetailsScreen
 import playlistmaker.ui.main.DrawMainScreen
 import playlistmaker.ui.search.SearchScreen
 import playlistmaker.ui.settings.DrawSettingsScreen
-import playlistmaker.ui.view_model.SearchViewModel
 
 enum class Routes(val route: String){
     MAIN("playlistmaker/ui/main"),
@@ -27,7 +26,6 @@ fun PlaylistHost(
     startDestination: String = Routes.MAIN.route,
     navController: NavHostController,
     gson: Gson,
-    searchViewModel: SearchViewModel
 ) {
     NavHost(
         navController = navController,
@@ -48,7 +46,6 @@ fun PlaylistHost(
 
         composable(route = Routes.SEARCH.route) {
             SearchScreen(
-                searchViewModel = searchViewModel,
                 navigateToDetailScreen = { track ->
                     val trackJson = gson.toJson(track)
                     navController.navigate("details/$trackJson")

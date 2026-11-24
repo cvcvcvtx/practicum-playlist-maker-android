@@ -27,5 +27,4 @@ class MyApplication : Application() {
         }
     }
 
-   // private fun startKoin(function: Any) {}
 }

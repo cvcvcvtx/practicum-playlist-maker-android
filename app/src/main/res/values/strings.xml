@@ -17,4 +17,5 @@
     <string name="search_tracks_placeholder">Введите название трека</string>
     <string name="check_connection">Проверьте соединение</string>
     <string name="no_tracks_found">Ничего не найдено</string>
+    <string name="dark_theme">Тёмная тема</string>
 </resources>

@@ -14,5 +14,6 @@
     <string name="search_tracks_placeholder">Enter track name</string>
     <string name="check_connection">Check connection</string>
     <string name="no_tracks_found">No tracks found</string>
+    <string name="dark_theme">Dark theme</string>
 
 </resources>

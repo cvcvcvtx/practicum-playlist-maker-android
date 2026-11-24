@@ -94,32 +94,24 @@ fun DrawMainScreen(
 
             MenuItem(painterResource(R.drawable.search), stringSearch,
                 onClick = {
-                    //Toast.makeText(context, stringSearch, Toast.LENGTH_SHORT).show()
-                    //val intent = Intent(context, SearchActivity::class.java)
-                    //startActivity(intent)
                     navigateToSearch()
                 }
             )
 
             MenuItem(painterResource(R.drawable.playlists), stringPlaylists,
                 onClick = {
-                    Toast.makeText(context, stringPlaylists, Toast.LENGTH_SHORT).show()
                     //navigateToPlaylists()
                 }
             )
 
             MenuItem(painterResource(R.drawable.favourite), stringFavourites,
                 onClick = {
-                    Toast.makeText(context, stringFavourites, Toast.LENGTH_SHORT).show()
                     //navigateToFavourites()
                 }
             )
 
             MenuItem(painterResource(R.drawable.settings), stringSettings,
                 onClick = {
-                    //Toast.makeText(context, stringSettings, Toast.LENGTH_SHORT).show()
-                    //val intent = Intent(this@MainActivity, SettingsActivity::class.java)
-                    //startActivity(intent)
                     navigateToSettings();
                 }
             )

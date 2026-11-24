@@ -1,5 +1,6 @@
 package playlistmaker.ui.settings
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -38,6 +39,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.net.toUri
 
 
 @Composable
@@ -76,7 +78,7 @@ fun DrawSettingsScreen(){
             verticalAlignment = Alignment.CenterVertically
         ){
             Text(
-                text = "Тёмная тема",
+                text = stringResource(R.string.dark_theme),
                 color = Color.Black,
                 fontSize = 21.sp,
                 modifier = Modifier.padding(start = 16.dp).weight(1f)
@@ -146,25 +148,38 @@ fun shareApplication(context: Context) {
 
     val shareIntent = Intent.createChooser(sendIntent, context.getString(R.string.share_through))
 
-    context.startActivity(shareIntent)
+    try {
+        context.startActivity(shareIntent)
+    }catch (e: ActivityNotFoundException){
+        //
+    }
+
 }
 
 
 fun contactDevelopers(context: Context) {
 
-    val shareIntent = Intent(Intent.ACTION_SENDTO)
-    shareIntent.data = Uri.parse("mailto:")
-    shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(context.getString(R.string.contact_email)))
+    val mailIntent = Intent(Intent.ACTION_SENDTO)
+    mailIntent.data = "mailto:".toUri()
+    mailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(context.getString(R.string.contact_email)))
 
-    context.startActivity(shareIntent)
+    try {
+        context.startActivity(mailIntent)
+    }catch (e: ActivityNotFoundException){
+        //
+    }
 }
 
 
 fun openOfferPage(context: Context) {
-    val webpage: Uri = Uri.parse(context.getString(R.string.offer_webpage))
+    val webpage: Uri = context.getString(R.string.offer_webpage).toUri()
 
     val intent = Intent(Intent.ACTION_VIEW, webpage)
 
-    context.startActivity(intent)
+    try {
+        context.startActivity(intent)
+    }catch (e: ActivityNotFoundException){
+        //
+    }
 
 }

@@ -28,44 +28,40 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import com.practicum.playlist_maker_android_dmitrikovvitaly.R
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.practicum.playlist_maker_android_dmitrikovvitaly.R
+import org.koin.androidx.compose.koinViewModel
 import playlistmaker.domain.model.Track
 import playlistmaker.ui.view_model.SearchState
 import playlistmaker.ui.view_model.SearchViewModel
 
 
-
-
 @Composable
 fun SearchScreen(
-    searchViewModel: SearchViewModel,
     navigateToDetailScreen: (Track) -> Unit,
     navigateBack: () -> Unit
 ) {
+    val searchViewModel: SearchViewModel = koinViewModel()
     val screenState by searchViewModel.searchScreenState.collectAsState()
     var text by remember { mutableStateOf("") }
     val focusRequester = remember { FocusRequester() }
